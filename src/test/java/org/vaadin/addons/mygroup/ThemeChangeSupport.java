@@ -1,4 +1,4 @@
-package com.gork;
+package org.vaadin.addons.mygroup;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.server.ServiceInitEvent;

@@ -1,4 +1,4 @@
-package com.gork;
+package org.vaadin.addons.mygroup;
 
 import com.vaadin.flow.component.html.Div;
 

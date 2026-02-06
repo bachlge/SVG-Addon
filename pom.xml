@@ -4,16 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gork</groupId>
-    <artifactId>svg-addon</artifactId>
-    <version>1.0.0</version>
-
-    <name>SVG Add-on for Vaadin</name>
+    <groupId>org.vaadin.addons.mygroup</groupId>
+    <artifactId>addon-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Add-on for Vaadin</name>
     <description>###Project Name###</description>
-
-    <organization>
-        <name>Gork Bach</name>
-    </organization>
 
     <properties>
         <vaadin.version>25.0.3</vaadin.version>
@@ -21,7 +16,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
-
+    <organization>
+        <name>###author###</name>
+    </organization>
     <licenses>
         <license>
             <name>Apache 2</name>
