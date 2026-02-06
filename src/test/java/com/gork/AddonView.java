@@ -1,5 +1,6 @@
-package org.vaadin.addons.mygroup;
+package com.gork;
 
+import com.gork.TheAddon;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.router.Route;
 

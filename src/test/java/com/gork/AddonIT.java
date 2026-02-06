@@ -1,4 +1,4 @@
-package org.vaadin.addons.mygroup;
+package com.gork;
 
 import com.vaadin.flow.component.html.testbench.DivElement;
 import com.vaadin.testbench.BrowserTest;
