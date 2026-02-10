@@ -2,6 +2,13 @@
 
 based on an [Article by Matti Tahvonen](https://vaadin.com/blog/the-hidden-gem-of-vaadin-25-the-element-api-now-supports-svg-and-mathml), I created a few Java Classes representing SVG Elements.
 
+This approach does not need any external dependencies, no javascript, no d3.
+
+Plain Vaadin }> plain Java :-)
+
+The code is to be considered experimental and just for the sake of proving the feasibility of the new technology introduced in Vaadin 25.
+
+
 ## Usage
 
 ### in pom.xml

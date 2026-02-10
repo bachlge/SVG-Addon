@@ -17,6 +17,10 @@ public class Polyline extends SvgElement {
 
 	public Polyline() {
 		super("polyline");
+
+		// nice color and no fill by default
+		setStroke("gold");
+		setFill("none");
 	}
 
 	public Polyline(Point... points) {
@@ -30,14 +34,15 @@ public class Polyline extends SvgElement {
 	}
 
 	public void setPoints(Point... points) {
-		Arrays.stream(points).map(p -> p.toString()).collect(Collectors.joining(" "));
+		setPoints(Arrays.stream(points).map(p -> p.toString()).collect(Collectors.joining(" ")));
 	}
 
 	public void setPoints(Set<Point> points) {
-		points.stream().map(p -> p.toString()).collect(Collectors.joining(" "));
+		setPoints(points.stream().map(p -> p.toString()).collect(Collectors.joining(" ")));
 	}
 
 	public void setPoints(String val) {
+		System.out.println(">>>>>>>>>Polygline-Path=" + val);
 		this.getElement().setAttribute("points", val);
 	}
 

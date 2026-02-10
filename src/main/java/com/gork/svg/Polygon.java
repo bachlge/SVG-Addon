@@ -17,6 +17,10 @@ public class Polygon extends SvgElement {
 
 	public Polygon() {
 		super("polygon");
+
+		// nice color and no fill by default
+		setStroke("lightgreen");
+		setFill("none");
 	}
 
 	public Polygon(Point... points) {
@@ -30,19 +34,19 @@ public class Polygon extends SvgElement {
 	}
 
 	public void setPoints(Point... points) {
-		Arrays.stream(points).map(p -> p.toString()).collect(Collectors.joining(" "));
+		setPoints(Arrays.stream(points).map(p -> p.toString()).collect(Collectors.joining(" ")));
 	}
 
 	public void setPoints(Set<Point> points) {
-		points.stream().map(p -> p.toString()).collect(Collectors.joining(" "));
+		setPoints(points.stream().map(p -> p.toString()).collect(Collectors.joining(" ")));
 	}
 
 	public void setPoints(String val) {
+		System.out.println(">>>>>>>>>Polygon-Path=" + val);
 		this.getElement().setAttribute("points", val);
 	}
 
 	public void setPathLength(double val) {
-		System.out.println(">>>>>>>>>Polygon-Path=" + val);
 		this.getElement().setAttribute("pathLength", String.valueOf(val));
 	}
 
