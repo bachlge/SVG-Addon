@@ -9,8 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEvent;
+import com.vaadin.flow.component.ComponentEventListener;
+import com.vaadin.flow.component.DomEvent;
 import com.vaadin.flow.component.HasComponents;
 import com.vaadin.flow.dom.Element;
+import com.vaadin.flow.shared.Registration;
 
 @SuppressWarnings("serial")
 public class SvgElement extends Component implements HasComponents {
@@ -47,6 +51,30 @@ public class SvgElement extends Component implements HasComponents {
 
 	public void setTransformTranslate(double x, double y) {
 		setTransform(String.format("translate(%1s %2s)", x, y));
+	}
+
+	public Registration addClickListener(ComponentEventListener<ClickEvent> listener) {
+		return addListener(ClickEvent.class, listener);
+	}
+
+	@DomEvent("click")
+	public static class ClickEvent extends ComponentEvent<SvgElement> {
+
+	    public ClickEvent(SvgElement source, boolean fromClient) {
+	        super(source, fromClient);
+	    }
+	}
+
+	public Registration addMouseOverListener(ComponentEventListener<MouseOverEvent> listener) {
+		return addListener(MouseOverEvent.class, listener);
+	}
+
+	@DomEvent("mouseover")
+	public static class MouseOverEvent extends ComponentEvent<SvgElement> {
+
+	    public MouseOverEvent(SvgElement source, boolean fromClient) {
+	        super(source, fromClient);
+	    }
 	}
 
 }
