@@ -31,6 +31,21 @@ public class DonutSegment extends Path {
 		setFill("none");
 	}
 
+	public DonutSegment(double innerRadius, double outerRadius, double startAngle, double endAngle) {
+		this();
+		this.r1 = innerRadius;
+		this.r2 = outerRadius;
+		this.a1 = startAngle;
+		this.a2 = endAngle;
+		calcPath();
+		setD(path);
+	}
+
+	public DonutSegment(double centerX, double centerY, double innerRadius, double outerRadius, double startAngle, double endAngle) {
+		this(innerRadius, outerRadius, startAngle, endAngle);
+		setCenter(centerX, centerY);
+	}
+
 	public void setCenter(double x, double y) {
 		setX(x);
 		setY(y);
@@ -120,6 +135,8 @@ public class DonutSegment extends Path {
 		Coord lr = new Coord(a2, r1);
 		Coord ul = new Coord(a1, r2);
 		Coord ur = new Coord(a2, r2);
+
+		LOGGER.info("Segment-Corners-" + "ll:" + a1 + "/" + r1 + ", lr:"+ a2 + "/" + r1 + ", ul:" + a1 + "/" + r2 + ", ur:" + a2 + "/" + r2);
 
 		path = String.format("M %1s %2s A %3s %4s 0 0 1 %5s %6s L %7s %8s A %9s %10s 0 0 0 %11s %12s z",
 				ll.x, ll.y,
