@@ -21,11 +21,10 @@ public class DonutSegment extends Path {
 	private double a1 = 0;		// start angle
 	private double a2 = 0;		// end angle
 
-	// lower left, lower right, upper left, upper right
-	private Coord ll;
-	private Coord lr;
-	private Coord ul;
-	private Coord ur;
+	private Coord ll;			// lower left
+	private Coord lr;			// lower right
+	private Coord ul;			// upper left
+	private Coord ur;			// upper right
 
 	private String path = "";	// resulting path
 
@@ -112,11 +111,11 @@ public class DonutSegment extends Path {
 		calcPath();
 	}
 
-	public double getCenterX() {
+	public double getElementCenterX() {
 		return (ll.x + ul.x + lr.x + ur.x ) / 4;
 	}
 
-	public double getCenterY() {
+	public double getElementCenterY() {
 		return (ll.y + ul.y + lr.y + ur.y ) / 4;
 	}
 
@@ -151,42 +150,26 @@ public class DonutSegment extends Path {
 		ul = new Coord(a1, r2);
 		ur = new Coord(a2, r2);
 
-		LOGGER.info("Segment-Corners-" + "ll:" + a1 + "/" + r1 + ", lr:"+ a2 + "/" + r1 + ", ul:" + a1 + "/" + r2 + ", ur:" + a2 + "/" + r2);
+//		LOGGER.info("Segment-Corners-" + "ll:" + a1 + "/" + r1 + ", lr:"+ a2 + "/" + r1 + ", ul:" + a1 + "/" + r2 + ", ur:" + a2 + "/" + r2);
 
 		path = String.format("M %1s %2s A %3s %4s 0 0 1 %5s %6s L %7s %8s A %9s %10s 0 0 0 %11s %12s z",
-				ll.x, ll.y,
-				r1, r1, lr.x, lr.y,
-				ur.x, ur.y,
-				r2, r2, ul.x, ul.y);
+				ll.x, ll.y,				// mode to
+				r1, r1, lr.x, lr.y,		// draw an arc
+				ur.x, ur.y,				// draw a line
+				r2, r2, ul.x, ul.y);	// draw an arc
 	}
 
-	/**
-	 * Test:
-	 * return the d-Parameter of a Path drawing a DonutSegment
-	 * @return
-	 */
-	public void test() {
-
-		r1=100;
-		r2=150;
-
-		a1=10;
-		a2=80;
-
-		calcPath();
-
-		setD(path);
-	}
 
 	/*
 	 * get the Coordinates of the Corner-Points of a Donut-Segment given the Beta-Angle and the Distance
-	 * 
-	 * 
-	 *         |  \
-	 *    a/   |   \dist
-	 *    /    |h   \               b
-	 *   /     |     \
-	 *  /      |  beta\
+	 *         o x/y
+	 *        /|\`
+	 *       / | \  `
+	 *      /  |  \    `
+	 *    a/   |   \dist  `
+	 *    /    |h   \        `b
+	 *   /     |     \           ` 
+	 *  /      |  beta\             `  
 	 * +-------+-------+---------------+
 	 *     p dist  q           dist
 	 * 
@@ -209,7 +192,7 @@ public class DonutSegment extends Path {
 			} else { // beta outside 0-360
 				LOGGER.error("Coordinates can only be calculated for angles between 0 and 360 degrees");
 			}
-			LOGGER.info("Coord (dist=" + dist + "/beta=" + beta + ") ==> x/y=" + x + "/" + y);
+//			LOGGER.info("Coord (dist=" + dist + "/beta=" + beta + ") ==> x/y=" + x + "/" + y);
 		}
 
 		public void calc(double beta, double dist) {
