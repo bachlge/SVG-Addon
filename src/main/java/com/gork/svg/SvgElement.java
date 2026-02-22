@@ -45,6 +45,18 @@ public class SvgElement extends Component implements HasComponents {
 		this.getElement().setAttribute("stroke", val);
 	}
 
+	public void setStrokeWidth(String val) {
+		this.getElement().setAttribute("stroke-width", val);
+	}
+
+	public void setStrokeOpacity(String val) {
+		this.getElement().setAttribute("stroke-opacity", val);
+	}
+
+	public void setStrokeTransparent() {
+		this.getElement().setAttribute("stroke-opacity", String.valueOf(0));
+	}
+
 	public void setTransform(String val) {
 		this.getElement().setAttribute("transform", val);
 	}

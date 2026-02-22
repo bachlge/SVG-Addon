@@ -20,6 +20,15 @@ public class Text extends SvgElement implements HasStyle {
 		super("text");
 	}
 
+	/**
+	 * Convenience Constructor directly adding the given text-String
+	 * @param text
+	 */
+	public Text(String text) {
+		this();
+		add(text);
+	}
+
 	public void setX(double val) {
 		this.getElement().setAttribute("x", String.valueOf(val));
 	}

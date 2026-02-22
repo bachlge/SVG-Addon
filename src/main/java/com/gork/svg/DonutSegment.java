@@ -21,13 +21,20 @@ public class DonutSegment extends Path {
 	private double a1 = 0;		// start angle
 	private double a2 = 0;		// end angle
 
+	// lower left, lower right, upper left, upper right
+	private Coord ll;
+	private Coord lr;
+	private Coord ul;
+	private Coord ur;
+
 	private String path = "";	// resulting path
 
 	public DonutSegment() {
 		super();
 
 		// nice color and no fill by default
-		setStroke("skyblue");
+		setStroke("Gold");
+		setStrokeTransparent();
 		setFill("none");
 	}
 
@@ -105,6 +112,14 @@ public class DonutSegment extends Path {
 		calcPath();
 	}
 
+	public double getCenterX() {
+		return (ll.x + ul.x + lr.x + ur.x ) / 4;
+	}
+
+	public double getCenterY() {
+		return (ll.y + ul.y + lr.y + ur.y ) / 4;
+	}
+
 	/**
 	 * 
 	 * After each set method: calculate the path
@@ -131,10 +146,10 @@ public class DonutSegment extends Path {
 	public void calcPath() {
 
 		// lower left, lower right, upper left, upper right
-		Coord ll = new Coord(a1, r1);
-		Coord lr = new Coord(a2, r1);
-		Coord ul = new Coord(a1, r2);
-		Coord ur = new Coord(a2, r2);
+		ll = new Coord(a1, r1);
+		lr = new Coord(a2, r1);
+		ul = new Coord(a1, r2);
+		ur = new Coord(a2, r2);
 
 		LOGGER.info("Segment-Corners-" + "ll:" + a1 + "/" + r1 + ", lr:"+ a2 + "/" + r1 + ", ul:" + a1 + "/" + r2 + ", ur:" + a2 + "/" + r2);
 
@@ -143,7 +158,6 @@ public class DonutSegment extends Path {
 				r1, r1, lr.x, lr.y,
 				ur.x, ur.y,
 				r2, r2, ul.x, ul.y);
-
 	}
 
 	/**
@@ -155,8 +169,9 @@ public class DonutSegment extends Path {
 
 		r1=100;
 		r2=150;
-		a1=30;
-		a2=120;
+
+		a1=10;
+		a2=80;
 
 		calcPath();
 
@@ -166,39 +181,49 @@ public class DonutSegment extends Path {
 	/*
 	 * get the Coordinates of the Corner-Points of a Donut-Segment given the Beta-Angle and the Distance
 	 * 
-	 * Pro Ancestor-Level ist die Anzahl der möglichen Elemente: 2^Level: 2^0=1, 2^1=2, 2^2=4, 2^3=8, etc
-	 * wir können den linken und rechten Winkel (beta) wie folgt ermitteln:
-	 * Winkel links = 180 / mögliche Anzahl Elemente der Ebene * Position des Elements-1
-	 * Winkel rechts = 180 / mögliche Anzahl Elemente der Ebene * Position des Elements
-	 * das Donut-Segment ist ein gleichschenkeliges Dreieck, 2 der Seiten sind:
-	 * Abstand von Zentrum innen = SPACE*(level-1);
-	 * Abstand von Zentrum außen = SPACE*level;
-	 * die Länge der der dritten Seite ist: 2*Abstand von Zentrum*sin(beta/2)
-	 * hiermit kennen wir 2 Seiten des rechtwinkeligen Dreiecks:
-	 * c = 2*(Abstand von Zentrum)
-	 * a = Länge der der dritten Seite
-	 * mit Pythagoras kann b errechnet werden --> haben wir schon = länge der dritten Seite des gleichseitigen
-	 * wir brauchen als y-Koordinate die Höhe auf c: (a*b)/c
-	 * den p-Teil von c bekommen wir mit Pythagoras als wurzel(b^2-h^2)
-	 * die x-Koordinte ist dann: -1*Abstand von Zentrum innen+p
 	 * 
+	 *         |  \
+	 *    a/   |   \dist
+	 *    /    |h   \               b
+	 *   /     |     \
+	 *  /      |  beta\
+	 * +-------+-------+---------------+
+	 *     p dist  q           dist
+	 * 
+	 * a = c.cos(β)
+	 * hc = a.sin(β)
+	 * p = sqrt(a^2 - hc^2)
+	 * 
+	 * x=p
+	 * y=hc
 	 */
 	private class Coord {
 		public double x, y;
-		private double lengthA, lengthB, lengthC, lengthH, lengthP;
 
 		public Coord(double beta, double dist) {
-			// gleichschenkeliges Dreieck
+			if (beta >= 0 & beta <= 180) {
+				calc(beta, dist);
+			} else if (beta >= 180 & beta <= 360) {
+				calc(beta-180, dist);
+				x=-x; y=-y;
+			} else { // beta outside 0-360
+				LOGGER.error("Coordinates can only be calculated for angles between 0 and 360 degrees");
+			}
+			LOGGER.info("Coord (dist=" + dist + "/beta=" + beta + ") ==> x/y=" + x + "/" + y);
+		}
+
+		public void calc(double beta, double dist) {
+			double lengthA, lengthB, lengthC, lengthH, lengthP;
+			// gleichschenkeliges Dreieck (liegend, Schenkel=dist, Basis=Seite B des rechtwinkeligen Dreiecks
 			lengthB = 2*dist * Math.sin(Math.toRadians(beta/2));
-			// rechtwinkeliges Dreieck
-			lengthC = dist;
-			lengthA = Math.sqrt(Math.pow(2*lengthC, 2) - Math.pow(lengthB, 2));
-			lengthH = (lengthA*lengthB)/(2*lengthC); // =posY
+			// rechtwinkeliges Dreieck (A dieses Dreiecks=A des gleichschenkeligen, C dieses = 2*dist)
+			lengthC = 2*dist;
+			lengthA = Math.sqrt(Math.pow(lengthC, 2) - Math.pow(lengthB, 2));
+			lengthH = (lengthA*lengthB)/(lengthC); // =posY
 			lengthP = Math.sqrt(Math.pow(lengthB, 2) - Math.pow(lengthH, 2));
-			x = -lengthC+lengthP;
+			x = -dist+lengthP;
 			y = -lengthH;
 
-			LOGGER.info("Donut calculated Coords=" + x + "/" + y);
 		}
 	}
 

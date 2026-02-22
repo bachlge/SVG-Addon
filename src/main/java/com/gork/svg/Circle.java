@@ -12,27 +12,43 @@ public class Circle extends SvgElement {
 		super("circle");
 	}
 
-	public void setCenter(double x, double y) {
-		setX(x);
-		setY(y);
+	/**
+	 * Convenience Constructor
+	 * @param cx
+	 * @param cy
+	 * @param r
+	 */
+	public Circle(double cx, double cy, double r) {
+		this();
+		setCenter(cx, cy);
+		setRadius(r);
 	}
 
+	/**
+	 * Convenience Method
+	 */
+	public void setCenter(double cx, double cy) {
+		setCx(cx);
+		setCy(cy);
+	}
+
+	/**
+	 * Convenience Method
+	 */
 	public void setCenter(Point p) {
-		setX(p.getX());
-		setY(p.getY());
+		setCenter(p.getX(), p.getY());
 	}
 
 
 	public void setRadius(double r) {
 		this.getElement().setAttribute("r", String.valueOf(r));
-
 	}
 
-	public void setX(double cx) {
+	public void setCx(double cx) {
 		this.getElement().setAttribute("cx", String.valueOf(cx));
 	}
 
-	public void setY(double cy) {
+	public void setCy(double cy) {
 		this.getElement().setAttribute("cy", String.valueOf(cy));
 	}
 
