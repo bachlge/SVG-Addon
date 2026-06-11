@@ -37,7 +37,16 @@ public class Text extends SvgElement implements HasStyle {
 		this.getElement().setAttribute("y", String.valueOf(val));
 	}
 
+	public void setPosition(double x, double y) {
+		setX(x);
+		setY(y);
+	}
+
 	public void setRotate(Set<Number> setOfNumbers) {
+	}
+
+	public void setRotate(Number val) {
+		this.getElement().setAttribute("rotate", String.valueOf(val));
 	}
 
 	public void setDx(double val) {
@@ -60,5 +69,21 @@ public class Text extends SvgElement implements HasStyle {
 		add(text);
 	}
 
-	
+	public void setTextAnchor(TextAnchor val) {
+		this.getElement().setAttribute("text-anchor", val.name());
+	}
+
+	public enum TextAnchor {
+		start, middle, end,
+	}
+
+	public void setTextAlignmentBaseline(AlignmentBaseline val) {
+		this.getElement().setAttribute("alignment-baseline", val.name());
+	}
+
+	public enum AlignmentBaseline {
+		Baseline, Central, Hanging, Ideographic, Mathematical, Alphabetic,// "Before-edge", "After-edge", 
+	}
+
+
 }

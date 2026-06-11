@@ -5,6 +5,9 @@ public class Rectangle extends SvgElement {
 
 	public Rectangle() {
 		super("rect");
+		setFillNone();
+		setStroke("red");
+		setStrokeWidth(1);
 	}
 
 	public void define(double x, double y, double w, double h) {

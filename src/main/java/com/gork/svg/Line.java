@@ -43,4 +43,20 @@ public class Line extends SvgElement implements HasStyle {
 		this.getElement().setAttribute("pathLength", String.valueOf(val));
 	}
 
+	/*
+	 * Convenience Method to set X1 and Y1
+	 */
+	public void setStart(double x, double y) {
+		setX1(x);
+		setY1(y);
+	}
+
+	/*
+	 * Convenience Method to set X2 and Y2
+	 */
+	public void setEnd(double x, double y) {
+		setX2(x);
+		setY2(y);
+	}
+
 }

@@ -41,12 +41,24 @@ public class SvgElement extends Component implements HasComponents {
 		this.getElement().setAttribute("fill", val);
 	}
 
+	public void setFillNone() {
+		setFill("none");
+	}
+
+	/**
+	 * Stroke Color, eg "gold"
+	 * @param val
+	 */
 	public void setStroke(String val) {
 		this.getElement().setAttribute("stroke", val);
 	}
 
 	public void setStrokeWidth(String val) {
 		this.getElement().setAttribute("stroke-width", val);
+	}
+
+	public void setStrokeWidth(double val) {
+		this.getElement().setAttribute("stroke-opacity", String.valueOf(val));
 	}
 
 	public void setStrokeOpacity(String val) {
