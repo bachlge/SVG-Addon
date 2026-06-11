@@ -47,7 +47,7 @@ public class Marker extends SvgElement {
 	 * @param val
 	 */
 	public void setPreserveAspectRatio(AspectRatio val) {
-		this.getElement().setAttribute("href", val.toString());
+		this.getElement().setAttribute("preserveAspectRatio", val.toString());
 	}
 
 	public enum AspectRatio { none, xMinYMin, xMidYMin, xMaxYMin, xMinYMid, xMidYMid, xMaxYMid, xMinYMax, xMidYMax, xMaxYMax }
