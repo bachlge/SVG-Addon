@@ -6,7 +6,7 @@
  * Markers can be attached to shapes using the marker-start, marker-mid, and marker-end properties.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Marker extends SvgElement {

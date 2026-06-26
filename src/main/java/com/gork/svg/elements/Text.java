@@ -7,7 +7,7 @@
  * This is different than being hidden by default, as setting the display property won't show the text.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import java.util.Set;
 

@@ -4,7 +4,7 @@
  * thereby allowing animations to control translation, scaling, rotation, and/or skewing.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class AnimateTransform extends SvgElement {

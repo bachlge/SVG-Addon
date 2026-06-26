@@ -1,4 +1,4 @@
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Rectangle extends SvgElement {

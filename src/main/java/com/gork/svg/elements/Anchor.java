@@ -6,7 +6,7 @@
  * SVG's <a> element is a container, which means you can create a link around text (like in HTML) but also around any shape.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Anchor extends SvgElement {

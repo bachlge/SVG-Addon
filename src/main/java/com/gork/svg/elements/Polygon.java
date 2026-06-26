@@ -6,7 +6,7 @@
  * For open shapes, see the <polyline> element.
  * 
 */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import java.util.Arrays;
 import java.util.Set;

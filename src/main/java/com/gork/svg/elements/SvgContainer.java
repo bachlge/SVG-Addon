@@ -7,7 +7,7 @@
  * If you have an existing SVG document to embed in another document via URL, use <img>, <object>, or <image>.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
@@ -94,7 +94,7 @@ public class SvgContainer extends SvgElement implements HasSize {
 	 * @param height
 	 */
 	public void setViewBox(double minX, double minY, double width, double height) {
-		this.getElement().setAttribute("viewBox", "%s %s %s %s");
+		this.getElement().setAttribute("viewBox", String.format("%s %s %s %s", minX, minY, width, height));
 	}
 
 	public void setViewBox(String viewBox) {

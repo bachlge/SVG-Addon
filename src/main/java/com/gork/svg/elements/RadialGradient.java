@@ -3,7 +3,7 @@
  * The <linearGradient> SVG element lets authors define linear gradients to apply to other SVG elements.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class RadialGradient extends SvgElement {

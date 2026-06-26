@@ -3,7 +3,7 @@
  * The <circle> SVG element is an SVG basic shape, used to draw circles based on a center point and a radius.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Circle extends SvgElement {

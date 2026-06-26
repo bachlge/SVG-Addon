@@ -6,7 +6,7 @@
  * For closed shapes see the <polygon> element.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import java.util.Arrays;
 import java.util.Set;

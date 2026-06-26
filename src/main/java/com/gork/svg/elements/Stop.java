@@ -4,7 +4,7 @@
  * This element is always a child of a <linearGradient> or <radialGradient> element.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Stop extends SvgElement {

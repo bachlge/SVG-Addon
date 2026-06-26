@@ -6,7 +6,7 @@
  * It can also group multiple elements to be referenced later with the <use> element.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import com.vaadin.flow.component.HasComponents;
 

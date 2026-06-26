@@ -3,7 +3,7 @@
  * Fun-Class hard coding a Heart as a SVG Path
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Heart extends Path {

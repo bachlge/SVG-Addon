@@ -9,7 +9,7 @@
  *   .endAngle(Math.PI / 2);  // "M0,-100A100,100,0,0,1,100,0L0,0Z"
  *
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class DonutSegment extends Path {

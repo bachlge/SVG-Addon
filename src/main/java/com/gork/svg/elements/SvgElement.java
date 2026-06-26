@@ -3,7 +3,7 @@
  * The base class for every SVG-Element
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +41,15 @@ public class SvgElement extends Component implements HasComponents {
 		this.getElement().setAttribute("fill", val);
 	}
 
+	public void setFillOpacity(double val) {
+		setFillOpacity(String.valueOf(val));
+	}
+
+	public void setFillOpacity(String val) {
+		this.getElement().setAttribute("fill-opacity", val);
+	}
+
+
 	public void setFillNone() {
 		setFill("none");
 	}
@@ -53,12 +62,16 @@ public class SvgElement extends Component implements HasComponents {
 		this.getElement().setAttribute("stroke", val);
 	}
 
+	public void setStrokeWidth(double val) {
+		setStrokeWidth(String.valueOf(val));
+	}
+
 	public void setStrokeWidth(String val) {
 		this.getElement().setAttribute("stroke-width", val);
 	}
 
-	public void setStrokeWidth(double val) {
-		this.getElement().setAttribute("stroke-opacity", String.valueOf(val));
+	public void setStrokeOpacity(double val) {
+		setStrokeOpacity(String.valueOf(val));
 	}
 
 	public void setStrokeOpacity(String val) {
@@ -66,7 +79,7 @@ public class SvgElement extends Component implements HasComponents {
 	}
 
 	public void setStrokeTransparent() {
-		this.getElement().setAttribute("stroke-opacity", String.valueOf(0));
+		setStrokeOpacity(0);
 	}
 
 	public void setTransform(String val) {

@@ -3,7 +3,7 @@
  * Utility Class for Coordinate-Point
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 public class Point {
 

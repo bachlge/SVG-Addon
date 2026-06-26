@@ -4,7 +4,7 @@
  * All the basic shapes can be created with a path element.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 @SuppressWarnings("serial")
 public class Path extends SvgElement {

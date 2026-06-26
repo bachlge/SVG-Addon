@@ -8,7 +8,7 @@
  * promotes understandability of the SVG content and is beneficial to the overall accessibility of the document.
  * 
  */
-package com.gork.svg;
+package com.gork.svg.elements;
 
 import com.vaadin.flow.component.HasComponents;
 
