@@ -10,10 +10,8 @@
  */
 package com.gork.svg.elements;
 
-import com.vaadin.flow.component.HasComponents;
-
 @SuppressWarnings("serial")
-public class Defs extends SvgElement implements HasComponents {
+public class Defs extends SvgElement {
 
 	public Defs() {
 		super("defs");

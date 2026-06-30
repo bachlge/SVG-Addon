@@ -42,8 +42,13 @@ public class Polyline extends SvgElement {
 	}
 
 	public void setPoints(String val) {
-		System.out.println(">>>>>>>>>Polygline-Path=" + val);
+		System.out.println(">>>>>>>>>Polyline-Path=" + val);
 		this.getElement().setAttribute("points", val);
+	}
+
+	public void setPath(String val) {
+		System.out.println(">>>>>>>>>Polyline-Path=" + val);
+		this.getElement().setAttribute("d", val);
 	}
 
 	public void setPathLength(double val) {

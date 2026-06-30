@@ -46,6 +46,11 @@ public class Polygon extends SvgElement {
 		this.getElement().setAttribute("points", val);
 	}
 
+	public void setPath(String val) {
+		System.out.println(">>>>>>>>>Polygon-Path=" + val);
+		this.getElement().setAttribute("d", val);
+	}
+
 	public void setPathLength(double val) {
 		this.getElement().setAttribute("pathLength", String.valueOf(val));
 	}

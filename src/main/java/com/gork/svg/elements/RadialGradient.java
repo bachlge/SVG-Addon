@@ -37,6 +37,14 @@ public class RadialGradient extends SvgElement {
 	}
 
 	/**
+	 * This attribute defines a reference to another <radialGradient> element that will be used as a template.
+	 * @param <URL>
+	 */
+	public void setHref(String val) {
+		this.getElement().setAttribute("gref", val);
+	}
+
+	/**
 	 * eg "rotate(90)"
 	 * @param val
 	 */
